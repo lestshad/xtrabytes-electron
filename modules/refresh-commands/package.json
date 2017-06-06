@@ -1,0 +1,7 @@
+{
+  "name": "refresh-commands",
+  "description": "Commands to update the XtrayBYtes wallet GUI",
+  "private": true,
+  "version": "1.0.0",
+  "main": "refresh-commands.js"
+}
