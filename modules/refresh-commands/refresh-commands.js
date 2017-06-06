@@ -51,11 +51,9 @@ method.getExchangeData = function(ticker) {
 	fetch(url) // Call the fetch function passing the url of the API as a parameter
 	.then((resp) => resp.json()) // Transform the data into json
 	.then(function(resp) {
-		console.log(resp);
-	var text = resp[0].name + ":   1 " + resp[0].symbol + " = $" + resp[0].price_usd;
-	text += " | 1h: " + resp[0].percent_change_1h +  "% | 24h: " + resp[0].percent_change_24h +  "% | 7d: " + resp[0].percent_change_7d + "%" ;
-	console.log(text);
-	$("." + ticker).html(text);
+		var text = resp[0].name + ":   1 " + resp[0].symbol + " = $" + resp[0].price_usd;
+		text += " | 1h: " + resp[0].percent_change_1h +  "% | 24h: " + resp[0].percent_change_24h +  "% | 7d: " + resp[0].percent_change_7d + "%" ;
+		$("." + ticker).html(text);
 		return resp;
 	})
 	.catch(function() {

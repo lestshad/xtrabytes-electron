@@ -53,7 +53,7 @@ body {
 }
 
 #leftpane .static-nodes  {
-	background-image: url(../images/logo-on-dashboard.png);
+	background-image: url(../images/logo-off-static-nodes.png);
 }
 
 
@@ -91,6 +91,18 @@ body {
 	overflow: hidden;
 	min-width: 784px;
 }
+
+
+#static-nodes,
+#send-receive,
+#history,
+#block-explorer,
+#settings,
+#backup {
+	display: none;
+}
+
+
 
 #dashboard {
 	min-width: 864px;
@@ -161,6 +173,92 @@ body {
 
 
 
+#static-nodes .section {
+	padding: 10px;
+	border: 0px #aaa solid;
+	border-radius: 5px;
+	display: inline-block;
+	box-shadow: 0px 0px 16px #c6c2a3;
+	background-color: #fff;
+}
+
+#static-nodes .overview {
+	width: 846px;
+	margin: 12px 0 0 10px;
+	height: 400px;
+	min-height: 300px;
+}
+
+#static-nodes .bottom {
+	width: 846px;
+	margin: 12px 0 0 10px;
+	height: 200px;
+	min-height: 200px;
+}
+#static-nodes .bottom h3 {
+	font-size: 18px;
+}
+
+
+#static-nodes .static-active,
+#static-nodes .static-available,
+#static-nodes .static-active {
+	width: 270px;
+	max-width: 270px;
+	display: inline-block;
+	height: 200px;
+}
+
+#static-nodes .main > div {
+  display: inline-block;
+  width: 49%;
+  margin-top: 10px;
+}
+
+#static-nodes .register {
+  	width: 800px;
+  	margin: 3px auto;
+  	padding: 3px;
+  	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000;
+} 
+
+#static-nodes h3 {
+
+}
+
+#static-nodes div{
+	margin: 0 0 5px 0;
+	border : none;
+}
+
+#static-nodes label {
+	display: inline-block;
+	width: 180px;
+	text-align: right;
+	margin:3px;
+	font-size: 14px;
+}
+
+#static-nodes input[type=text], input[type=password]{
+	width: 600px; 
+	font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,Sans-Serif;
+	padding: 2px;
+	font-size: 0.9em;
+
+}
+
+#static-nodes input[type=text]:focus, input[type=password]:focus{
+	background-color: #dcf0ff;
+	border:2px solid #fff;
+	box-shadow: 0px 0px 0px #000;
+	color: #000;
+}
+
+#static-nodes .button {
+	font-size: 1em;
+	padding: 5px;
+}
 
 
 
