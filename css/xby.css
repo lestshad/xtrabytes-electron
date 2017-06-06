@@ -1,0 +1,182 @@
+html {
+	height: 100%;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	background-color: '#e7e7e7';
+}
+
+body {
+	height: 100%; 
+    min-height: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+#leftpane {
+	height: 100%;
+	min-height: 100%;
+	width: 260px;
+	min-width: 260px;
+	background-color: #217fc5;
+	position: relative;
+}
+
+.left-logo  {
+	padding-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 222px;
+}
+
+
+#leftpane .links li,
+#leftpane .links a {
+	color: #fff;
+	list-style: none;
+	height: 50px;
+	min-height: 50px;
+	text-decoration: none;
+	font-size: 22px;
+}
+
+#leftpane .links a {
+	padding-left: 36px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	height: 50px;
+	min-height: 50px;
+}
+
+#leftpane .dashboard {
+	background-image: url(../images/logo-on-dashboard.png);
+
+}
+
+#leftpane .static-nodes  {
+	background-image: url(../images/logo-on-dashboard.png);
+}
+
+
+#leftpane .send-receive  {
+	background-image: url(../images/logo-off-send-receive.png);
+}
+
+
+#leftpane .history  {
+	background-image: url(../images/logo-off-history.png);
+}
+
+
+#leftpane .block-explorer  {
+	background-image: url(../images/logo-off-block-explorer.png);
+}
+
+
+#leftpane .settings  {
+	background-image: url(../images/logo-off-settings.png);
+}
+
+
+#leftpane .backup  {
+	background-image: url(../images/logo-off-backup.png);
+}
+
+
+#main {
+	position: absolute;
+	width: 100%;
+	left: 260px;
+	top: 0px;
+	height: 100%;
+	overflow: hidden;
+	min-width: 784px;
+}
+
+#dashboard {
+	min-width: 864px;
+}
+
+#dashboard .section {
+	padding: 10px;
+	border: 0px #aaa solid;
+	border-radius: 5px;
+	display: inline-block;
+	box-shadow: 0px 0px 16px #c6c2a3;
+	background-color: #fff;
+}
+
+#dashboard .overview {
+	width: 846px;
+	margin: 12px 0 0 10px;
+	height: 300px;
+	min-height: 300px;
+}
+
+#dashboard .bottom {
+	width: 866px;
+	margin: 10px 0 0 10px;
+	padding: 0px;
+	border: 0px;
+	box-shadow: none;
+}
+
+
+#dashboard .recent {
+	width: 475px;
+	margin: 0px 11px 0 0;
+	float: left;
+	min-height: 270px;
+	font-size: 12px;
+}
+
+#dashboard .recent .date {
+	font-size: 10px;
+}
+
+#dashboard .recent .receive {
+	color: green;
+}
+
+#dashboard .recent .send {
+	color: red;
+}
+
+
+
+
+#dashboard .exchange-info {
+	width: 335px;
+	margin: 0px;
+	float: right;
+	min-height: 270px;
+	font-size: 11px;
+}
+
+
+
+.tickerprice  {
+	width: 100%;
+	padding-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
