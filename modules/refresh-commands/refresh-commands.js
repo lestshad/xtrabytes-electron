@@ -15,6 +15,7 @@ method.refreshTotalBalance = function() {
 		}
 		balance = ret.result;
 		$(".user-balance").html(balance);
+		$("#send-receive  #current-balance").val(balance);
 	});
 }
 
@@ -51,8 +52,17 @@ method.getExchangeData = function(ticker) {
 	fetch(url) // Call the fetch function passing the url of the API as a parameter
 	.then((resp) => resp.json()) // Transform the data into json
 	.then(function(resp) {
-		var text = resp[0].name + ":   1 " + resp[0].symbol + " = $" + resp[0].price_usd;
-		text += " | 1h: " + resp[0].percent_change_1h +  "% | 24h: " + resp[0].percent_change_24h +  "% | 7d: " + resp[0].percent_change_7d + "%" ;
+		var changeClass = "green";
+		if(resp[0].percent_change_24h.indexOf('-') > -1){
+			changeClass = "red";
+		}
+		var text = "<td>" + resp[0].name + " </td><td><strong>1 " + resp[0].symbol + "</strong> = </td><td><span class='"+changeClass+"'>"+resp[0].price_btc+"</span> BTC <span class='italic'>($" + resp[0].price_usd + ")</span></td>";
+		
+		if(resp[0].symbol == 'BTC') {
+			text = "<td>" + resp[0].name + " </td><td><strong>1 " + resp[0].symbol + "</strong> = </td><td><span class='"+changeClass+"'>$"+resp[0].price_usd+"</span></td>";
+		}
+		
+		//text += " | 1h: " + resp[0].percent_change_1h +  "% | 24h: " + resp[0].percent_change_24h +  "% | 7d: " + resp[0].percent_change_7d + "%" ;
 		$("." + ticker).html(text);
 		return resp;
 	})
@@ -71,7 +81,68 @@ method.getBitcoinData = function() {
 	var json = this.getExchangeData("stratis");
 
 }
+
+
+
+//listreceivedbyaddress 0 true
+method.refreshReceiveAddresses = function() {
+    if (count === undefined) {
+        var count = 15;
+    }
 	
+	var tx = this.rpc.listReceivedByAddress(0, true, function (err, ret) {
+		if (err) {
+			console.error(err);
+		}
+		addresses = ret.result;
+		//console.log(addresses);
+		var html = "<table>";
+		html += '<thead><tr><th class="label">Label</th><th class="address">Address</th></tr></thead><tbody>';
+		for (var i=0; i < addresses.length; i++) {
+			html += "<tr>";
+			html += "<td class='label'>"+addresses[i].account+"</td><td class='address'>"+addresses[i].address+"</td>";
+			html += "</tr>";
+		}
+		html += "</tbody></table>";
+		
+		$("#send-receive .bottom #addresslist").html(html);
+	});
+}
+
+
+
+//listtransactions * 50
+method.refreshAllTransactions = function() {
+    if (count === undefined) {
+        var count = 25000;
+    }
+	
+	var tx = this.rpc.listTransactions("*", count, function (err, ret) {
+		if (err) {
+			console.error(err);
+		}
+		transactions = ret.result;
+		transactions.reverse();
+		//console.log(transactions);
+		var dateFormat = require('dateformat');
+		var html = "<table class='transactions'>";
+		html += '<thead><tr><th class="label">Label</th><th class="address">Address</th><th class="time">Date</th><th class="amount">Amount</th></tr></thead><tbody>';
+		for (var i=0; i < transactions.length; i++) {
+			var theDate = new Date(0);
+			theDate.setUTCSeconds(transactions[i].time + theDate.getTimezoneOffset()*60);
+			html += "<tr>";
+			html += "<td class='label'>"+transactions[i].account+"</td><td class='address'>"+ transactions[i].address+"</td>";
+			html += "<td class='time'>"+dateFormat(theDate, "d-m-yyyy")+"</td><td class='amount'>"+transactions[i].amount+"</td>";
+			html += "</tr>";
+		}
+		html += "</tbody></table>";
+		
+		$("#history .main").html(html);
+	});
+}
+
+
+
 	
 // export the module
 module.exports = RefreshCommands;

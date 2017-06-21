@@ -1,0 +1,7 @@
+{
+  "name": "actions-commands",
+  "description": "Commands to perform actions on the XtrayBYtes wallet GUI",
+  "private": true,
+  "version": "1.0.0",
+  "main": "actions-commands.js"
+}

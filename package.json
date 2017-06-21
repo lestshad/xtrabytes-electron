@@ -20,6 +20,7 @@
     "electron": "~1.6.2"
   },
   "dependencies" : {
-    "refresh-commands": "file:modules/refresh-commands"
+    "refresh-commands": "file:modules/refresh-commands",
+    "action-commands": "file:modules/action-commands"
   }
 }

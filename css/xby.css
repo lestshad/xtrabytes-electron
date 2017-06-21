@@ -10,7 +10,63 @@ body {
 	margin: 0px;
 	padding: 0px;
 	overflow: hidden;
+	color: #1e7abf;
 }
+
+iframe{
+    overflow:hidden;
+	width: 901px;
+	height: 656px;
+}
+iframe html {
+	font-size: 14px;
+	background: linear-gradient( to bottom, #2791e0, #156097 );
+}
+
+h2, 
+p {
+	-webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+}
+
+p {
+	font-size: 12px;
+	margin: 5px 0px;
+}
+
+
+table tbody { overflow-y:scroll; display:block; }
+table thead { display:block; }
+
+table {
+	border: 1px solid #aaa;
+}
+
+table, th, tr, td {
+	border: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+thead {
+	border-bottom: 2px solid #aaa;
+}
+
+tbody {
+	padding: 2px 10px;
+	border-bottom: 1px solid #aaa;
+	
+}
+
+td {
+	padding: 2px 4px;
+}
+
+td:first-child {
+	border-right: 1px solid #aaa;
+}
+
+
 
 #leftpane {
 	height: 100%;
@@ -108,7 +164,9 @@ body {
 	min-width: 864px;
 }
 
-#dashboard .section {
+#dashboard .section,
+#static-nodes .section,
+#send-receive .section {
 	padding: 10px;
 	border: 0px #aaa solid;
 	border-radius: 5px;
@@ -117,7 +175,8 @@ body {
 	background-color: #fff;
 }
 
-#dashboard .overview {
+#dashboard .overview,
+#send-receive .overview {
 	width: 846px;
 	margin: 12px 0 0 10px;
 	height: 300px;
@@ -134,7 +193,7 @@ body {
 
 
 #dashboard .recent {
-	width: 475px;
+	width: 500px;
 	margin: 0px 11px 0 0;
 	float: left;
 	min-height: 270px;
@@ -153,40 +212,51 @@ body {
 	color: red;
 }
 
-
-
-
 #dashboard .exchange-info {
-	width: 335px;
+	width: 315px;
 	margin: 0px;
 	float: right;
 	min-height: 270px;
 	font-size: 11px;
 }
 
+.exchange-info tbody {
+	padding: 0px;
+	overflow-y: visible;
+}
 
+.exchange-info table,
+.exchange-info tbody,
+.exchange-info thead,
+.exchange-info tr,
+.exchange-info td {
+	border: none;
+}
+
+
+.green {
+	color: green;
+}
+
+
+.red {
+	color: red;
+}
+
+.italic {
+	font-style: italic;
+}
 
 .tickerprice  {
 	width: 100%;
 	padding-top: 10px;
 }
 
-
-
-#static-nodes .section {
-	padding: 10px;
-	border: 0px #aaa solid;
-	border-radius: 5px;
-	display: inline-block;
-	box-shadow: 0px 0px 16px #c6c2a3;
-	background-color: #fff;
-}
-
 #static-nodes .overview {
 	width: 846px;
 	margin: 12px 0 0 10px;
-	height: 400px;
-	min-height: 300px;
+	height: 365px;
+	min-height: 365px;
 }
 
 #static-nodes .bottom {
@@ -209,13 +279,15 @@ body {
 	height: 200px;
 }
 
-#static-nodes .main > div {
+#static-nodes .main > div,
+#send-receive .main > div {
   display: inline-block;
   width: 49%;
   margin-top: 10px;
 }
 
-#static-nodes .register {
+#static-nodes .register ,
+#send-receive .register {
   	width: 800px;
   	margin: 3px auto;
   	padding: 3px;
@@ -223,16 +295,14 @@ body {
 	color: #000;
 } 
 
-#static-nodes h3 {
-
-}
-
-#static-nodes div{
+#static-nodes div,
+#send-receive div {
 	margin: 0 0 5px 0;
 	border : none;
 }
 
-#static-nodes label {
+#static-nodes label ,
+#send-receive label {
 	display: inline-block;
 	width: 180px;
 	text-align: right;
@@ -240,7 +310,8 @@ body {
 	font-size: 14px;
 }
 
-#static-nodes input[type=text], input[type=password]{
+#static-nodes input[type=text], input[type=password],
+#send-receive input[type=text], input[type=password] {
 	width: 600px; 
 	font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,Sans-Serif;
 	padding: 2px;
@@ -248,30 +319,127 @@ body {
 
 }
 
-#static-nodes input[type=text]:focus, input[type=password]:focus{
+#static-nodes input[type=text]:focus, input[type=password]:focus,
+#send-receive input[type=text]:focus, input[type=password]:focus {
 	background-color: #dcf0ff;
 	border:2px solid #fff;
 	box-shadow: 0px 0px 0px #000;
 	color: #000;
 }
 
-#static-nodes .button {
+#static-nodes .button,
+#send-receive .button {
 	font-size: 1em;
 	padding: 5px;
 }
 
 
+#send-receive .overview {
+	width: 846px;
+	margin: 4px 0 0 2px;
+	height: 236px;
+	min-height: 236px;
+}
+
+
+#send-receive .bottom {
+	width: 846px;
+	margin: 12px 0 0 2px;
+	height: 330px;
+	min-height: 330px;
+}
+
+#send-receive .button {
+	float: right;
+}
+
+#send-receive {
+	padding: 8px;
+}
+
+#send-receive table tbody { 
+	height:220px; 
+}
+
+#send-receive table { 
+	width: 600px;
+	font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,Sans-Serif;
+	font-size: 12px;
+}
+
+#send-receive #current-balance {
+	vertical-align:bottom;
+	overflow:visible; 
+	font-size:1em; 
+	display:inline;  
+	margin:0; 
+	padding:0; 
+	border:0; 
+	color:blue; 
+	cursor:pointer;
+}
+
+#addresslist tr {
+	cursor: pointer;
+}
+
+
+#addresslist tr th.label,
+#addresslist tr td.label {
+	width: 200px;
+}
+
+#addresslist tr th.address,
+#addresslist tr td.address {
+	width: 400px;
+}
+
+/* transactions */
+
+#history .transactions {
+	padding: 8px;
+}
+
+#history table tbody { 
+	height:220px; 
+}
+
+#history table { 
+	width: 880px;
+	height: 600px;
+	min-height: 600px;
+	font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,Sans-Serif;
+	font-size: 12px;
+}
+
+#history tr {
+	cursor: pointer;
+}
+
+
+#history tr th.label,
+#history tr td.label {
+	width: 200px;
+}
+
+#history tr th.address,
+#history tr td.address {
+	width: 300px;
+}
 
 
 
+#history tr th.time,
+#history tr td.time {
+	width: 120px;
+}
 
 
 
-
-
-
-
-
+#history tr th.amount,
+#history tr td.amount {
+	width: 200px;
+}
 
 
 

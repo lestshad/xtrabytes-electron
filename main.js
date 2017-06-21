@@ -9,6 +9,24 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+
+const Store = require('electron-store');
+const store = new Store();
+/*
+store.set('unicorn', '🦄');
+console.log(store.get('unicorn'));
+//=> '🦄'
+
+// Use dot-notation to access nested properties
+store.set('foo.bar', true);
+console.log(store.get('foo'));
+//=> {bar: true}
+
+store.delete('unicorn');
+console.log(store.get('unicorn'));
+//=> undefined
+*/
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -60,3 +78,5 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+

@@ -1,0 +1,45 @@
+<div class="section overview">
+	<h2>Send</h2>
+	
+ <div class="main">
+      <div class="one">
+        <div class="register">
+          <form id="reg-form">
+            <div>
+              <label for="send-address">Payment to:</label>
+              <input type="text" id="send-address" spellcheck="false" placeholder="BJNYo7GJkSbVe8G8MmZHSBzCTJaURQ9RtP"/>
+            </div>
+            <div>
+              <label for="password">Password (if set)</label>
+              <input type="password" id="password" spellcheck="false" placeholder="**********"/>
+            </div>
+			<div>
+              <label for="amount">Amount</label>
+              <input type="text" id="amount" spellcheck="false" placeholder="10.0000" />
+            </div>
+			<div>
+              <label for="Balance">Current Balance</label>
+              <input type="text" id="current-balance" spellcheck="false" placeholder="balance" readonly />
+            </div>
+            <div>
+              <label for="send"></label>
+              <input type="submit" value="Send" id="send" class="button" />
+            </div>
+			<div>
+				<div class='msg'></div>
+			</div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+	
+</div>
+<div class="bottom section">			
+	<h2>Receive</h2>
+	<p>
+		These are your XtraBYtes addresses for receiving payments. You may want to give a different one to each sender to keep track of who is paying you.
+	</p>
+	<div id="addresslist"></div>
+</div>

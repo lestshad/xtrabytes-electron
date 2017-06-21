@@ -4,6 +4,7 @@
 
 // require the refresh-commands module.
 var RefreshCommands = require('./modules/refresh-commands/refresh-commands.js');
+var ActionCommands = require('./modules/action-commands/action-commands.js');
 var RpcClient = require('bitcoind-rpc');
 
 var userBalance = "loading...";
@@ -17,12 +18,32 @@ var config = {
 	port: '35001',
 };
 
+	var rpc = new RpcClient(config);
+	var update = new RefreshCommands(rpc);
+	var action = new ActionCommands(rpc);
 
-run();
+run(rpc, update, action);
 
 
 
-function run() {
+//refresh every 10 sec
+window.setInterval(function(){
+	shortRefresh(rpc, update, action);
+	console.log("Short Refresh Occurred");
+}, 10000, rpc, update, action);
+
+
+//refresh every 60 sec
+window.setInterval(function(){
+	longRefresh(rpc, update, action);
+	console.log("Long Refresh Occurred");
+}, 60000, rpc, update, action);
+
+
+
+
+function run(rpc, update, action) {
+	
 	//include html
 	$("#dashboard").load("html/dashboard.html");
 	$("#static-nodes").load("html/static-nodes.html");
@@ -32,17 +53,30 @@ function run() {
 	$("#settings").load("html/settings.html");
 	$("#backup").load("html/backup.html");
 	
-	
-	var rpc = new RpcClient(config);
-	var update = new RefreshCommands(rpc);
-
 	update.refreshTotalBalance();
 	update.refreshTransactions(12);
 	update.getBitcoinData();
+	update.refreshReceiveAddresses();
+	update.refreshAllTransactions();
 	
-	
+	setTimeout(interactions, 2000, action, update);
 	watchMenuChanges();
 }
+
+function shortRefresh(rpc, update, action) {
+	update.refreshTotalBalance();
+	update.refreshTransactions(12);
+	update.refreshReceiveAddresses();
+	update.refreshAllTransactions();
+	setTimeout(interactions, 2000, action, update);
+}
+
+
+function longRefresh(rpc, update, action) {
+	update.getBitcoinData();
+}
+
+
 
 function watchMenuChanges() {
 	$("#leftpane .menu-link.dashboard").on('click', function(event) {
@@ -72,7 +106,7 @@ function watchMenuChanges() {
 	$("#leftpane .menu-link.block-explorer").on('click', function(event) {
 		event.preventDefault();
 		$(".page").hide();
-		$("#block-explore").show();
+		$("#block-explorer").show();
 	});
 	
 	$("#leftpane .menu-link.settings").on('click', function(event) {
@@ -88,7 +122,42 @@ function watchMenuChanges() {
 	});
 }
 
-
+function interactions(action, update) {
+	//console.log($('#addresslist tr'));
+	$('#addresslist tr').hover(function() {
+		console.log("hover");
+		$(this).css('background-color', '#b8e1ff');
+	}, function() {
+		console.log("hoveroff");
+		$(this).css('background-color', '#fff');
+	});
+	
+	$('#addresslist td').on('click', function(event) {
+		
+		$('#addresslist td').css('background-color', '');
+		$(this).css('background-color', '#83b7de');
+		
+	});
+	
+	$('#send.button').on('click', function(event) {
+		event.preventDefault(); //BBCRUjZBvi3hSfNDC2g2phbxeomsKcLKb8
+		var xbyaddress = $('#send-receive #send-address').val();
+		var amount = $('#send-receive #amount').val();
+		var password = $('#send-receive #password').val();
+		
+		
+		
+		
+		if(password) {
+			action.sendCoins(xbyaddress, amount, password);
+		} else {
+			action.sendCoinsNoPassword(xbyaddress, amount);
+		}
+		
+		setTimeout(update.refreshTotalBalance(), 1000);
+		
+	});
+}
 	
 	
 	
