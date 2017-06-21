@@ -58,6 +58,7 @@ function run(rpc, update, action) {
 	update.getBitcoinData();
 	update.refreshReceiveAddresses();
 	update.refreshAllTransactions();
+	update.drawGraph();
 	
 	setTimeout(interactions, 2000, action, update);
 	watchMenuChanges();

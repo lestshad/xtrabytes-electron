@@ -191,6 +191,16 @@ td:first-child {
 	box-shadow: none;
 }
 
+#dashboard .left {
+	width: 300px;
+	display: inline-block;
+}
+
+#dashboard .right {
+	width: 500px;
+	display: inline-block;
+}
+
 
 #dashboard .recent {
 	width: 500px;

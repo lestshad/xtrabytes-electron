@@ -123,7 +123,7 @@ method.refreshAllTransactions = function() {
 		}
 		transactions = ret.result;
 		transactions.reverse();
-		//console.log(transactions);
+		console.log(transactions);
 		var dateFormat = require('dateformat');
 		var html = "<table class='transactions'>";
 		html += '<thead><tr><th class="label">Label</th><th class="address">Address</th><th class="time">Date</th><th class="amount">Amount</th></tr></thead><tbody>';
@@ -141,7 +141,62 @@ method.refreshAllTransactions = function() {
 	});
 }
 
+method.drawGraph = function() {
+	google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawCurveTypes);
 
+function drawCurveTypes() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'XBY');
+
+/*
+      data.addRows([
+        [0, 0],    [1, 10],   [2, 23],  [3, 17],   [4, 18],  [5, 9],
+        [6, 11],   [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
+        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
+
+      ]); */
+	  
+	  data.addRows([
+        [new Date(2017, 6, 07), 1],    
+		[new Date(2017, 6, 08), 333],   
+		[new Date(2017, 6, 09), 4534],
+		[new Date(2017, 6, 10), 22],    
+		[new Date(2017, 6, 11), 465643],   
+		[new Date(2017, 6, 12), 33333],
+		[new Date(2017, 6, 13), 234234],    
+		[new Date(2017, 6, 14), 3333],   
+		[new Date(2017, 6, 15), 11],
+		[new Date(2017, 6, 16), 7777],    
+		[new Date(2017, 6, 17), 54554],   
+		[new Date(2017, 6, 18), 4545],
+		[new Date(2017, 6, 19), 55555],    
+		[new Date(2017, 6, 20), 800000],   
+		[new Date(2017, 6, 21), 900000],
+
+      ]);
+	  
+  
+
+
+      var options = {
+        hAxis: {
+          title: 'Time - last 30 days'
+        },
+        vAxis: {
+          title: 'Balance'
+        },
+        series: {
+          1: {curveType: 'function'}
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+	
+}
 
 	
 // export the module
