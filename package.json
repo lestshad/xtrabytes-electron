@@ -1,5 +1,6 @@
 {
   "name": "xtrabytes-electron",
+  "productName": "XBY Wallet",
   "version": "1.0.0",
   "description": "A lightweight html5/js frontend for the XtraBYtes daemon",
   "main": "main.js",
@@ -9,18 +10,24 @@
   "repository": "https://github.com/lestshad/xtrabytes-electron",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "xby",
+    "crypto",
+    "wallet"
   ],
   "author": "shad",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "~1.6.2"
   },
-  "dependencies" : {
-    "refresh-commands": "file:modules/refresh-commands",
-    "action-commands": "file:modules/action-commands"
+  "dependencies": {
+    "action-commands": "file:modules/action-commands",
+    "bitcoind-rpc": "^0.7.0",
+    "dateformat": "^2.0.0",
+    "refresh-commands": "file:modules/refresh-commands"
+  },
+  "build": {
+    "win": {
+      "iconUrl": "https://github.com/lestshad/xtrabytes-electron/blob/master/images/xtrabytes256_icon.ico"
+    }
   }
 }
