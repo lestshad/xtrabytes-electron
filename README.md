@@ -21,24 +21,24 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 [GNU GPLv3](LICENSE)
 
 
-## Compilation
+# Compilation
 
-# Win32
+## Win32
 
 You'll want to have all the prereqs in place:
-*Windows 7 / Server 2008 R2 or higher
-*Visual Studio 2015 Update 3 - download VS 2015 Community Edition for free
-*Python 2.7
-*Node.js
-*Git
-*Debugging Tools for Windows if you plan on creating a full distribution since symstore.exe is used for creating a symbol store from .pdb files.
+* Windows 7 / Server 2008 R2 or higher
+* Visual Studio 2015 Update 3 - download VS 2015 Community Edition for free
+* Python 2.7
+* Node.js
+* Git
+* Debugging Tools for Windows if you plan on creating a full distribution since symstore.exe is used for creating a symbol store from .pdb files.
 
 use git bash:
  
 $ electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/xtrabytes256_icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"XBY Wallet\"
 
-# OSX:
+## OSX:
 electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds
 
-# Linux
+## Linux
 electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds
